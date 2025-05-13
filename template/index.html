@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Prédiction Souscription Dépôt</title>
+</head>
+<body>
+    <h2>Formulaire Client - Souscription à un Dépôt Bancaire</h2>
+    <form action="/submit" method="post">
+
+        <label>Âge :</label><br>
+        <input type="number" name="age" min="18" max="100" required><br><br>
+
+        <label>Profession :</label><br>
+        <select name="job" required>
+            <option value="admin.">Admin</option>
+            <option value="blue-collar">Ouvrier</option>
+            <option value="entrepreneur">Entrepreneur</option>
+            <option value="housemaid">Femme de ménage</option>
+            <option value="management">Cadre</option>
+            <option value="retired">Retraité</option>
+            <option value="self-employed">Indépendant</option>
+            <option value="services">Services</option>
+            <option value="student">Étudiant</option>
+            <option value="technician">Technicien</option>
+            <option value="unemployed">Sans emploi</option>
+            <option value="unknown">Inconnu</option>
+        </select><br><br>
+
+        <label>État matrimonial :</label><br>
+        <select name="marital" required>
+            <option value="divorced">Divorcé(e)</option>
+            <option value="married">Marié(e)</option>
+            <option value="single">Célibataire</option>
+        </select><br><br>
+
+        <label>Niveau d'éducation :</label><br>
+        <select name="education" required>
+            <option value="primary">Primaire</option>
+            <option value="secondary">Secondaire</option>
+            <option value="tertiary">Supérieur</option>
+            <option value="unknown">Inconnu</option>
+        </select><br><br>
+
+        <label>Crédit en défaut :</label><br>
+        <input type="radio" name="default" value="Yes" required> Oui
+        <input type="radio" name="default" value="No"> Non<br><br>
+
+        <label>Solde :</label><br>
+        <input type="number" name="balance" min="0" step="100" required><br><br>
+
+        <label>Prêt immobilier :</label><br>
+        <input type="radio" name="housing" value="Yes" required> Oui
+        <input type="radio" name="housing" value="No"> Non<br><br>
+
+        <label>Prêt personnel :</label><br>
+        <input type="radio" name="loan" value="Yes" required> Oui
+        <input type="radio" name="loan" value="No"> Non<br><br>
+
+        <label>Type de contact :</label><br>
+        <select name="contact" required>
+            <option value="cellular">Cellulaire</option>
+            <option value="telephone">Téléphone</option>
+            <option value="unknown">Inconnu</option>
+        </select><br><br>
+
+        <label>Jour du dernier contact :</label><br>
+        <input type="number" name="day" min="1" max="31" required><br><br>
+
+        <label>Mois du dernier contact :</label><br>
+        <select name="month" required>
+            <option value="jan">Janvier</option>
+            <option value="feb">Février</option>
+            <option value="mar">Mars</option>
+            <option value="apr">Avril</option>
+            <option value="may">Mai</option>
+            <option value="jun">Juin</option>
+            <option value="jul">Juillet</option>
+            <option value="aug">Août</option>
+            <option value="sep">Septembre</option>
+            <option value="oct">Octobre</option>
+            <option value="nov">Novembre</option>
+            <option value="dec">Décembre</option>
+        </select><br><br>
+
+        <label>Durée du dernier contact (en secondes) :</label><br>
+        <input type="number" name="duration" min="0" max="5000" required><br><br>
+
+        <label>Nombre de contacts durant la campagne :</label><br>
+        <input type="number" name="campaign" min="1" max="50" required><br><br>
+
+        <label>Jours depuis le dernier contact :</label><br>
+        <input type="number" name="pdays" min="-1" max="1000" required><br><br>
+
+        <label>Nombre de contacts précédents :</label><br>
+        <input type="number" name="previous" min="0" max="100" required><br><br>
+
+        <label>Résultat de la campagne précédente :</label><br>
+        <select name="poutcome" required>
+            <option value="failure">Échec</option>
+            <option value="nonexistent">Inexistant</option>
+            <option value="success">Succès</option>
+        </select><br><br>
+
+        <input type="submit" value="Prédire">
+    </form>
+
+    {% if prediction_text %}
+        <h3>Résultat : {{ prediction_text }}</h3>
+    {% endif %}
+</body>
+</html>
